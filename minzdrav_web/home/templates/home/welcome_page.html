@@ -1,0 +1,20 @@
+{% load static wagtailcore_tags %}
+
+<header class="header">
+    <div class="header-link">
+        <h1>{{ page.title }}</h1>
+    </div>
+    <nav class="release-notes">
+        <a href="/admin/">Admin</a>
+    </nav>
+</header>
+
+<main class="main">
+    <div class="main-text">
+        {% if page.body %}
+        {{ page.body|richtext }}
+        {% else %}
+        <p>Welcome.</p>
+        {% endif %}
+    </div>
+</main>

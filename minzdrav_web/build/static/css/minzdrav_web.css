@@ -1,0 +1,197 @@
+/*
+    Global theme uses the existing palette/fonts from `home/static/css/welcome_page.css`.
+    Keep styles minimal and consistent across Home / Articles / Article detail.
+*/
+
+:root {
+    --c-text: #231f20;
+    --c-border: #e6e6e6;
+    --c-border-strong: #d9d9d9;
+    --c-link: #308282;
+    --c-link-hover: #ea1b10;
+    --c-accent: #43b1b0;
+
+    --radius: 10px;
+    --container: 960px;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    color: var(--c-text);
+    font-family: 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+    line-height: 1.25;
+}
+
+a {
+    background-color: transparent;
+    color: var(--c-link);
+    text-decoration: underline;
+    text-decoration-thickness: from-font;
+    text-underline-offset: 2px;
+}
+
+a:hover {
+    color: var(--c-link-hover);
+}
+
+.site-header {
+    border-bottom: 1px solid var(--c-border);
+}
+
+.site-nav {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 14px 15px;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+}
+
+.site-nav__link {
+    text-decoration: none;
+    color: var(--c-text);
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+}
+
+.site-nav__link:hover {
+    border-color: var(--c-border);
+    color: var(--c-link-hover);
+}
+
+.site-main {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 18px 15px 40px;
+}
+
+.page-title {
+    margin: 0 0 12px;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.page-meta {
+    margin: 0 0 16px;
+    font-size: 14px;
+    opacity: 0.75;
+}
+
+.article-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 12px;
+}
+
+.article-list__item {
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius);
+    padding: 12px 14px;
+}
+
+.article-list__title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.article-list__title a {
+    text-decoration: none;
+    color: var(--c-text);
+}
+
+.article-list__title a:hover {
+    text-decoration: underline;
+}
+
+.article-hero {
+    margin: 0 0 16px;
+}
+
+.article-hero img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--radius);
+}
+
+.breadcrumb-link {
+    display: inline-block;
+    margin: 0 0 12px;
+    text-decoration: none;
+    color: var(--c-link);
+}
+
+.breadcrumb-link:hover {
+    color: var(--c-link-hover);
+    text-decoration: underline;
+}
+
+.card {
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius);
+    padding: 14px;
+}
+
+.divider {
+    height: 1px;
+    background: var(--c-border);
+    border: 0;
+    margin: 14px 0;
+}
+
+.richtext {
+    color: var(--c-text);
+}
+
+.richtext> :first-child {
+    margin-top: 0;
+}
+
+.richtext p {
+    margin: 0 0 12px;
+}
+
+.richtext h2,
+.richtext h3 {
+    margin: 18px 0 10px;
+    font-weight: 600;
+}
+
+.richtext ul,
+.richtext ol {
+    margin: 0 0 12px;
+    padding-inline-start: 22px;
+}
+
+.richtext li {
+    margin: 6px 0;
+}
+
+.richtext a {
+    color: var(--c-link);
+}
+
+.richtext a:hover {
+    color: var(--c-link-hover);
+}
+
+@media (max-width: 996px) {
+    .site-main,
+    .site-nav {
+        max-width: 780px;
+    }
+}

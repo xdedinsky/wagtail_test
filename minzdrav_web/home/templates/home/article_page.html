@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-articlepage{% endblock %}
+
+{% block content %}
+<a class="breadcrumb-link" href="{{ nav_articles_url|default:'#' }}">← Späť na články</a>
+
+<h1 class="page-title">{{ page.title }}</h1>
+
+{% if page.publication_date %}
+<p class="page-meta">{{ page.publication_date|date:"j. n. Y" }}</p>
+{% endif %}
+
+{% if page.image %}
+<figure class="article-hero">
+    {% image page.image width-1200 as hero %}
+    <img src="{{ hero.url }}" width="{{ hero.width }}" height="{{ hero.height }}" alt="{{ page.title }}">
+</figure>
+{% endif %}
+
+<div class="richtext">
+    {{ page.content|richtext }}
+</div>
+{% endblock %}
