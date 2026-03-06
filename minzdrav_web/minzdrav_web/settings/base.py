@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'bakery',
     'wagtailbakery',
+    'storages',
 ]
  
 MIDDLEWARE = [
@@ -149,7 +150,8 @@ MEDIA_URL = "/media/"
 # See https://docs.djangoproject.com/en/4.2/ref/settings/#std-setting-STORAGES
 STORAGES = {
     "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
+        # Týmto povieme Djangu, aby rešpektovalo S3/MinIO nastavenia
+        "BACKEND": "storages.backends.s3boto3.S3Boto3Storage", 
     },
     "staticfiles": {
         "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
@@ -188,3 +190,22 @@ BUILD_DIR = os.path.join(BASE_DIR, 'build')
 BAKERY_VIEWS = (
     'wagtailbakery.views.AllPublishedPagesView',
 )
+
+# ----------------------------------------------------
+# LOKÁLNE S3 ÚLOŽISKO (MinIO)
+# ----------------------------------------------------
+AWS_ACCESS_KEY_ID = 'minioadmin'
+AWS_SECRET_ACCESS_KEY = 'minioadmin'
+AWS_STORAGE_BUCKET_NAME = 'mzsr'
+
+AWS_S3_ENDPOINT_URL = 'http://127.0.0.1:9002'
+
+AWS_S3_REGION_NAME = 'eu-central-1' 
+AWS_S3_SIGNATURE_VERSION = 's3v4'
+AWS_S3_ADDRESSING_STYLE = 'path'
+
+AWS_S3_USE_SSL = False
+AWS_S3_FILE_OVERWRITE = False
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+MEDIA_URL = f'{AWS_S3_ENDPOINT_URL}/{AWS_STORAGE_BUCKET_NAME}/'

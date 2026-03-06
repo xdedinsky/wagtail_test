@@ -190,6 +190,7 @@ a:hover {
 }
 
 @media (max-width: 996px) {
+
     .site-main,
     .site-nav {
         max-width: 780px;
